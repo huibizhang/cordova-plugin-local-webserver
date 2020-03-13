@@ -90,6 +90,12 @@
         // add after server is started to get the true port
         [self addFileSystemHandlers:authToken];
         [self addErrorSystemHandler:authToken];
+
+        //WaveLens changes
+        NSArray* paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+                                                              
+        [self.server addGETHandlerForPath:@"/assets-library/appIndex.html" filePath:[paths[0] stringByAppendingString: @"/appIndex.html" ] isAttachment:false cacheAge:0 allowRangeRequests:true];
+        
         
         // handlers must be added before server starts
         [self.server startWithPort:port bonjourName:nil];
