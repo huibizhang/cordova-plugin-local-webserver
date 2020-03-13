@@ -48,7 +48,8 @@
 
     // check the content tag src
     CDVViewController* vc = (CDVViewController*)self.viewController;
-    NSURL* startPageUrl = [NSURL URLWithString:vc.startPage];
+    NSString* localUrl = @"http://localhost:0/";
+    NSURL* startPageUrl = [NSURL URLWithString:[localUrl stringByAppendingString: vc.startPage]];
     if (startPageUrl != nil) {
         if ([[startPageUrl scheme] isEqualToString:@"http"] && [[startPageUrl host] isEqualToString:@"localhost"]) {
             port = [[startPageUrl port] unsignedIntegerValue];
