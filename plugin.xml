@@ -31,6 +31,9 @@
     <engines>
         <engine name="cordova-ios" version=">=4.1.0" />
     </engines>
+	<js-module src="www/localstorage.js" name="localstorageOverride">
+		<clobbers target="window.localstorage"/>
+	</js-module>
 
     <!-- ios -->
     <platform name="ios">
