@@ -35,7 +35,7 @@
     <!-- ios -->
     <platform name="ios">
 		
-		<js-module src="www/localstorage.js" name="localstorageOverride">
+		<js-module src="src/www/localstorage.js" name="localstorageOverride">
 			<clobbers target="window.localstorage"/>
 		</js-module>
 
