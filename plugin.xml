@@ -31,12 +31,13 @@
     <engines>
         <engine name="cordova-ios" version=">=4.1.0" />
     </engines>
-	<js-module src="www/localstorage.js" name="localstorageOverride">
-		<clobbers target="window.localstorage"/>
-	</js-module>
 
     <!-- ios -->
     <platform name="ios">
+		
+		<js-module src="www/localstorage.js" name="localstorageOverride">
+			<clobbers target="window.localstorage"/>
+		</js-module>
 
         <config-file target="config.xml" parent="/*">
 		    <feature name="CordovaLocalWebServer">
@@ -44,8 +45,9 @@
 			    <param name="onload" value="true"/>
 		    </feature>
             <preference name="CordovaLocalWebServerStartOnSimulator" value="true" />
+    		<preference name="WKWebViewOnly" value="true" />
 			<access origin="http://localhost" />
-      <allow-navigation href="http://localhost:*/*" />
+      		<allow-navigation href="http://localhost:*/*" />
         </config-file>
 		
         
