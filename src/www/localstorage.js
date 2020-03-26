@@ -21,12 +21,24 @@ function loadDataFromFile(onSucesss) {
     xhr.send();
 }
 
+function getFile(path, fileName, onSucesss, onError) {
+    window.resolveLocalFileSystemURL(path, function (dirEntry) {
+        var options = {
+            create: true,
+            exclusive: false
+        };
+        dirEntry.getFile(fileName, options, function (fileEntry) {
+            onSucesss && onSucesss(fileEntry);
+        }, onError);
+    }, onError);
+}
+
 function saveDataToFile(onSucesss, onError) {
     onSucesss = onSucesss || function () { };
     onError = onError || function (e) {
         console.error('failed to save localstorage data to file. Due to %O', e);
     };
-    window.resolveLocalFileSystemURL(cordova.file.dataDirectory + filename, function (fileEntry) {
+    getFile(cordova.file.dataDirectory, filename, function (fileEntry) {
         fileEntry.createWriter(function (fileWriter) {
             fileWriter.onwriteend = function () {
                 onSucesss();
