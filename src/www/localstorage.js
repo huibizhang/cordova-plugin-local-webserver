@@ -4,7 +4,7 @@ var filename = "wm.cordova.localwebserver.localstorage.json";
 function loadDataFromFile(onSucesss) {
     var xhr = new XMLHttpRequest();
     var filePath = cordova.file.dataDirectory + filename;
-    filePath = filePath.replace('file://', '/local-filesystem');
+    filePath = filePath.replace('file://', 'http://' + location.host + '/local-filesystem');
     xhr.open('get', filePath);
     xhr.onload = function () {
         try {
